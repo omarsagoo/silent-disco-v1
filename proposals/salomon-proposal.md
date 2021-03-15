@@ -66,7 +66,7 @@ music at the same time.
 
 ## Wireframes
 
-**Insert wireframe pictures here**
+[Wireframe](https://www.figma.com/file/1ELPG8gejbj7ECUmv7ZcOt/Silent-disco?node-id=0%3A1)
 
 
 ## Evaluation
