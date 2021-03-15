@@ -47,21 +47,21 @@ music at the same time.
 
 ## Personal Achievement Goals:
 
-1. test
-2. 
-3. 
+1. CRUD Parties and Playlists
+2. CRUD Users
+3. Connecting Users, Parties, Playlists
 
-### Teammate 1
+### Teammate 1: Brenner
 
-1. Goal 1
-1. Goal 2
-1. Goal 3
+1. Spotify API
+2. Connect Spotify API to Parties and Playlists
+3. Build Simple Front-End
 
-### Teammate 2
+### Teammate 2: Omar
 
-1. Goal 1
-1. Goal 2
-1. Goal 3
+1. Create Chat Room
+2. Associate Chat Room with Party
+3. Show Users in Chatroom
 
 
 ## Wireframes
