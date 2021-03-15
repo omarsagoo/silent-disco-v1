@@ -22,6 +22,7 @@ Team
 This application is for people that would like to have parties, but are unable to play music due to nosy neighbors or HOA rules! The solution to this is silent-disco! You can sign up with your friends and listen to songs together on one device! If everyone has headphones in then the party will be quiet and it will look like a bunch of people are dancing without any music! We hope to achieve an application that allows users to sign up, create or update playlists, and then listen to the songs on the playlist! 
 
 ## Objective 1: say your objective here, you must have at least three objectives to get credit for the intensive… accomplishing objective should be done by soley you
+make changes
 
 **Why do you want to meet this objective? How will it improve your project?** 
 
