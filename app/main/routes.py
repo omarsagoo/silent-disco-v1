@@ -21,6 +21,7 @@ def homepage():
 
 # Create Party
 @main.route('/create_party', methods=['GET', 'POST'])
+@login_required
 def create_party():
     ''' This route permits the creation of a party. It also sets the creator as the admin'''
     form = CreatePartyForm()
@@ -34,5 +35,16 @@ def create_party():
         db.sesion.add(new_party)
         db.session.commit()
         flash('Party Created Successfully')
-        return redirect(url_for('main.home', party=new_party))
+        return redirect(url_for('main.homepage', party=new_party))
     return render_template('main/create_party.html', form=form)
+
+
+# Party Details
+@main.route('/party/<party_id>')
+@login_required
+def party_details(party_id):
+    party = Party.query.get(party_id)
+    return render_template('main/party_detail.html')
+
+
+# Join Party
