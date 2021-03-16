@@ -35,4 +35,4 @@ def create_party():
         db.session.commit()
         flash('Party Created Successfully')
         return redirect(url_for('main.home', party=new_party))
-    return render_template('create_party.html', form=form)
+    return render_template('main/create_party.html', form=form)

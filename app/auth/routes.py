@@ -27,7 +27,7 @@ def signup():
         flash('Account Created.')
         return redirect(url_for('auth.login'))
     print(form.errors)
-    return render_template('signup.html', form=form)
+    return render_template('main/signup.html', form=form)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -37,9 +37,9 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         login_user(user, remember=True)
         next_page = request.args.get('next')
-        return redirect(next_page if next_page else url_for('main.profile'))
+        return redirect(next_page if next_page else url_for('main.homepage'))
     print(form.errors)
-    return render_template('login.html', form=form)
+    return render_template('main/login.html', form=form)
 
 
 @auth.route('/logout')
