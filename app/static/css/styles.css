@@ -1,3 +1,7 @@
 body {
     background-color: blueviolet;
 }
+
+.chatbox {
+    height: 50rem;
+}
