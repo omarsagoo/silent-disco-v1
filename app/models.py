@@ -12,11 +12,11 @@ from random import randint
 user_party_table = db.Table('user_party_table',
                         db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
                         db.Column('party_id', db.Integer, db.ForeignKey('party.id'))
-)
+                            )
 
 playlist_party_table = db.Table('playlist_party_table',
-                                  db.Column('party_id', db.Integer, db.ForeignKey('party.id')),
-                                  db.Column('playlist_id', db.Integer,db.ForeignKey('playlist.id'))
+                            db.Column('party_id', db.Integer, db.ForeignKey('party.id')),
+                            db.Column('playlist_id', db.Integer,db.ForeignKey('playlist.id'))
                                   )
 
 
