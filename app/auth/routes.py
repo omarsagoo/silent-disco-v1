@@ -40,3 +40,10 @@ def login():
         return redirect(next_page if next_page else url_for('main.profile'))
     print(form.errors)
     return render_template('login.html', form=form)
+
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.homepage'))
