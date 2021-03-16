@@ -48,3 +48,15 @@ def party_details(party_id):
 
 
 # Join Party
+@main.route('/join_party', methods=['GET', 'POST'])
+@login_required
+def join_part():
+    form = JoinPartyForm()
+    if form.validate_on_submit():
+        party = Party.query.filter_by(code=form.code.data).one()
+        current_user.past_parties.append(party)
+        current_user.current_party = party
+        db.session.commit()
+        flash('Party was created successfully')
+        return redirect(url_for('main.homepage', party=party))
+    return render_template('main/join_party.html', form=form)
