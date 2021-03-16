@@ -33,7 +33,7 @@ class Party(db.Model):
     created_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     admin = db.relationship('User')
     name = db.Column(db.String(80), nullable=False)
-    code = db.Column(db.String(80), nullable=False, unique=True)
+    code = db.Column(db.Integer, unique=True)
     party_people = db.relationship('User', secondary=user_party_table)
     playlist = db.relationship('Playlist', secondary=playlist_party_table)
     #TODO:
