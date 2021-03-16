@@ -28,3 +28,15 @@ def signup():
         return redirect(url_for('auth.login'))
     print(form.errors)
     return render_template('signup.html', form=form)
+
+
+@auth.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        login_user(user, remember=True)
+        next_page = request.args.get('next')
+        return redirect(next_page if next_page else url_for('main.profile'))
+    print(form.errors)
+    return render_template('login.html', form=form)
