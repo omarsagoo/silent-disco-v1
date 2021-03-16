@@ -66,7 +66,7 @@ music at the same time.
 
 ## Wireframes
 
-![alt text](https://imgur.com/a/hxzyxfr)
+(https://imgur.com/a/hxzyxfr)
 
 
 ## Evaluation
