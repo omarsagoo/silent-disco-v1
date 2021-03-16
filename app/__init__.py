@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 app.secret_key = os.urandom(24)
 
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*",)
 
 
 db = SQLAlchemy(app)
@@ -29,6 +29,9 @@ app.register_blueprint(main_routes)
 
 from app.auth.routes import auth as auth_routes
 app.register_blueprint(auth_routes)
+
+from app.chat.routes import chat as chat_routes
+app.register_blueprint(chat_routes)
 
 # with app.app_context():
 #     db.create_all()
