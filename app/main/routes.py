@@ -31,10 +31,10 @@ def create_party():
             code = randint(1000000,9999999)
         )
         current_user.current_party.append(new_party)
-        db.sesion.add(new_party)
+        db.session.add(new_party)
         db.session.commit()
         flash('Party Created Successfully')
-        return redirect(url_for('main.homepage', party=new_party))
+        return redirect(url_for('main.party_details', party_id=new_party.id))
     return render_template('main/create_party.html', form=form)
 
 
@@ -43,7 +43,7 @@ def create_party():
 @login_required
 def party_details(party_id):
     party = Party.query.get(party_id)
-    return render_template('main/party_detail.html')
+    return render_template('main/party_detail.html', party=party)
 
 
 # Join Party
