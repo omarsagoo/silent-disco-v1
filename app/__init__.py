@@ -1,4 +1,5 @@
-from .models import User
+
+
 import os
 
 from flask import Flask
@@ -18,6 +19,7 @@ socketio = SocketIO(app)
 
 db = SQLAlchemy(app)
 
+from .models import User
 ###########################
 # Authentication
 ###########################

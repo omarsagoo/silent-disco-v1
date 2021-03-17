@@ -4,13 +4,12 @@ from flask_login import login_user, logout_user, login_required, current_user
 from datetime import date, datetime
 
 import flask_login
-from app import bcrypt
 
 from app.models import User, Party, Playlist
 from app.main.forms import CreatePartyForm, JoinPartyForm 
 
 from random import randint
-from app import app, db
+from app import app, db, bcrypt
 
 main = Blueprint('main', __name__)
 

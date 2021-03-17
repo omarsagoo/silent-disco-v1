@@ -1,6 +1,4 @@
-from sqlalchemy_utils import URLType
-
-from app import db
+from . import db
 from flask_login import UserMixin
 
 from sqlalchemy import Table, Column, Integer, ForeignKey
