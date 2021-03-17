@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, ValidationError
-import bcrypt
+from app import bcrypt
 from app.models import User
 
 # Sign Up Form

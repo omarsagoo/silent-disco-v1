@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from datetime import date, datetime
-import bcrypt
+from app import bcrypt
 from app.models import User
 from app.auth.forms import SignUpForm, LoginForm
 # Import Forms
