@@ -17,6 +17,10 @@ playlist_party_table = db.Table('playlist_party_table',
                             db.Column('playlist_id', db.Integer,db.ForeignKey('playlist.id'))
                                   )
 
+message_party_table = db.Table('message_party_table',
+                            db.Column('party_id', db.Integer, db.ForeignKey('party.id')),
+                            db.Column('message_id', db.Integer,db.ForeignKey('message.id'))
+                                  )
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -35,7 +39,7 @@ class Party(db.Model):
     party_people = db.relationship('User', secondary=user_party_table)
     playlist = db.relationship('Playlist', secondary=playlist_party_table)
     #TODO:
-    # chat = 
+    messages = db.relationship('Message', secondary=message_party_table)
 
 class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,5 +48,8 @@ class Playlist(db.Model):
     #TODO:
     # songs = array of Song
 
-#TODO:
-# Chat Model
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
+    message = db.Column(db.String(100), nullable=False)
+

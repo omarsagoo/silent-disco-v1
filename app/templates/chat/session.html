@@ -1,19 +1,31 @@
 {% extends 'base/base.html' %}
 {% block content %}
 
-<h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
-<div class="message_holder"></div>
+  <h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
+  <div class="message_holder"></div>
 
-<form action="" method="POST">
-  <input type="text" class="username" placeholder="User Name"/>
-  <input type="text" class="message" placeholder="Messages"/>
-  <input type="submit"/>
+
+  <form method="POST" action="">
+    {{form.csrf_token}}
+    <fieldset>
+        <legend>Message</legend>
+
+        {{form.message.label}}
+        {{form.message}}
+
+        {{form.submit}}
+
+
+    </fieldset>
 </form>
 
-    <div class="row col-sm-8 offset-sm-2 bg-warning">
-        <div class="chatbox m-1 bg-dark">
-        </div>
-    </div>
+  <div class="row col-sm-8 offset-sm-2 bg-warning">
+      <div class="chatbox m-1 bg-dark">
+      </div>
+  </div>
 
+{% endblock %}
 
+{% block javascript %} 
+  <script src="/static/js/chat.js"></script> 
 {% endblock %}

@@ -38,7 +38,6 @@ def login():
         login_user(user, remember=True)
         next_page = request.args.get('next')
         return redirect(next_page if next_page else url_for('main.homepage'))
-    print(form.errors)
     return render_template('main/login.html', form=form)
 
 
