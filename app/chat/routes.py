@@ -16,7 +16,7 @@ def sessions():
 def messageReceived(methods=['GET', 'POST']):
     print('message was received!!!')
 
-@socketio.on('my event')
+@socketio.on('message')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
     print(f'received my event from {current_user.name}: '+ str(json))
     json['name'] = current_user.name

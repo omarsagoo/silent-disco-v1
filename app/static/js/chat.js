@@ -4,7 +4,7 @@ socket.on( 'connect', function() {
     var form = $( 'form' ).on( 'submit', function( e ) {
         e.preventDefault()
         let user_input = $( 'textarea#message' ).val()
-        socket.emit( 'my event', {
+        socket.emit( 'message', {
         message : user_input
         })
         $( 'input.message' ).val( '' ).focus()
