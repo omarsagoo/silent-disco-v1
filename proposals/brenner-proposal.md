@@ -2,7 +2,7 @@
 
 Dates 3/16-3/25
 
-**Salomon Cohen:** 
+**Brenner Haverlock:** 
 
 
 **Project Name:** 
@@ -66,8 +66,7 @@ music at the same time.
 
 ## Wireframes
 
-**Insert wireframe pictures here**
-
+(https://imgur.com/a/hxzyxfr)
 
 ## Evaluation
 
