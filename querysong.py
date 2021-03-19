@@ -40,7 +40,7 @@ r = requests.get(BASE_URL + 'search?q=SickoMode&type=track&market=US', headers=h
 d = r.json()
 print(r.text)
 
-path = input("Enter the path of your file: ") #C:\Users\---\Desktop\
+#path = input("Enter the path of your file: ") #C:\Users\---\Desktop\
 uri = input("Enter the Spotify playlist uri: ") #spotify:playlist:4FroAeQwZrJCYYyJroHd9V
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(
     client_id='b714b08a81b3470ab939354358c324c8', client_secret='83a32642aa4646009294ac6430b65dbe'))
@@ -59,10 +59,10 @@ for i, playlist in enumerate(songs['items']):
 for song in tracks:
     songToSearch = ' '.join([song[0], song[1]])
     query = urllib.parse.quote(songToSearch)
-    url = "https://www.youtube.com/results?search_query=" + query
-    html = urllib.request.urlopen(url)
-    video_links = re.findall(r'watch\?v=(\S{11})', html.read().decode())
-    YouTube('https://www.youtube.com/watch?v=' + video_links[0]).streams.first().download(path)
+    # url = "https://www.youtube.com/results?search_query=" + query
+    # html = urllib.request.urlopen(url)
+    # video_links = re.findall(r'watch\?v=(\S{11})', html.read().decode())
+    # YouTube('https://www.youtube.com/watch?v=' + video_links[0]).streams.first().download(path)
     
 
 # actual GET request with proper header
