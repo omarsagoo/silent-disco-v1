@@ -1,3 +1,4 @@
+from sqlalchemy.sql.sqltypes import ARRAY
 from . import db
 from flask_login import UserMixin
 
@@ -41,8 +42,7 @@ class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     current_song = db.Column(db.String(), nullable=False)
     party = db.relationship('Party', secondary=playlist_party_table)
-    #TODO:
-    # songs = array of Song
+    songs = db.Column(db.Text())
 
 #TODO:
 # Chat Model

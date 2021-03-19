@@ -28,3 +28,10 @@ class JoinPartyForm(FlaskForm):
         if not party:
             raise ValidationError(
                 'That code is incorrect. Please try again.')
+
+# Choose Playlist Form
+
+class PlaylistForm(FlaskForm):
+    ''' Form for choosing spotify playlist '''
+    uid = StringField('Playlist UID')
+    submit = SubmitField('Submit')
