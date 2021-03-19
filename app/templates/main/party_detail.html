@@ -7,7 +7,7 @@ Code: {{party.code}}
 
 
 <!-- {% if current_user == party.admin %} -->
-    <form action="/{{ url_for('main.add_playlist', party_id=id)}}" method="POST"></form>
+    <form method="POST" action="{{ url_for('main.add_playlist', party_id=party.id)}}">
         {{ form.csrf_token }}
         <fieldset>
             <legend>Enter your credentials</legend>
