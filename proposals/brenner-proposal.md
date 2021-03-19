@@ -1,4 +1,4 @@
-# Juniors Spring Intensive Deliverable Proposal
+s# Juniors Spring Intensive Deliverable Proposal
 
 Dates 3/16-3/25
 
@@ -53,15 +53,15 @@ music at the same time.
 
 ### Salo
 
-1. Goal 1
-1. CRUD Users
-1. Connecting Users, Parties, Playlists
+1. CRUD Parties and Playlists
+2. CRUD Users
+3. Connecting Users, Parties, Playlists
 
 ### Omar
 
-1. Create chat model
-1. Associate Chat Room with Party
-1. Show users in chatroom
+1. Create Chat Room
+2. Associate Chat Room with Party
+3. Show Users in Chatroom
 
 
 ## Wireframes
