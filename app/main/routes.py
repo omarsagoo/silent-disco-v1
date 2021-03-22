@@ -6,7 +6,7 @@ from datetime import date, datetime
 
 import flask_login
 
-from app.models import User, Party, Playlist
+from app.models import User, Party
 from app.main.forms import CreatePartyForm, JoinPartyForm, PlaylistForm 
 
 from random import randint
@@ -131,9 +131,10 @@ def add_playlist(party_id):
         query = urllib.parse.quote(songToSearch)
     
     party = Party.query.get(party_id)
-    party.playlist.songs.append(tracks)
+    print(party.songs)
+    party.songs.append(tracks)
 
-    return redirect(url_for('main.party_details', party=party))
+    return redirect(url_for('main.party_details', party=party, party_id=party.id))
 
 
     

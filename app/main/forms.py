@@ -4,7 +4,7 @@ from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length, ValidationError, URL
 from wtforms.fields.core import FloatField
 from app import bcrypt
-from app.models import User, Party, Playlist
+from app.models import User, Party
 
 # Create Party Form
 

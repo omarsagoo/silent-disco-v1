@@ -34,15 +34,11 @@ class Party(db.Model):
     name = db.Column(db.String(80), nullable=False)
     code = db.Column(db.Integer, unique=True)
     party_people = db.relationship('User', secondary=user_party_table)
-    playlist = db.relationship('Playlist', secondary=playlist_party_table)
+    #playlist = db.relationship('Playlist', db.ForeignKey('playlist.id'))
+    songs = db.Column(db.Text())
     #TODO:
     # chat = 
 
-class Playlist(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    current_song = db.Column(db.String(), nullable=False)
-    party = db.relationship('Party', secondary=playlist_party_table)
-    songs = db.Column(db.Text())
 
 #TODO:
 # Chat Model
