@@ -83,8 +83,8 @@ def add_playlist(party_id):
     print("This works?")
     form = PlaylistForm()
     if form.validate_on_submit():
-        uri = form.uri.data
-        print(uri)
+        uid = form.uid.data
+        print(uid)
 
     auth_response = requests.post(AUTH_URL, {
         'grant_type': 'client_credentials',
@@ -118,7 +118,7 @@ def add_playlist(party_id):
     parsed = json.loads(r.text)
     (json.dumps(parsed, indent=4, sort_keys=True))
 
-    songs = spotify.playlist_items(uri)
+    songs = spotify.playlist_items(uid)
     tracks = []
     print(tracks)
     for i, playlist in enumerate(songs['items']):
