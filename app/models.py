@@ -24,7 +24,7 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(80), nullable=False)
     username = db.Column(db.String(80), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
-    current_party = db.relationship('Party', secondary=user_party_table)
+    current_party = db.relationship("Party", back_populates="party_people")
     past_parties = db.relationship('Party', secondary=user_party_table)
 
 class Party(db.Model):

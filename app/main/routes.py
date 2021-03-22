@@ -38,7 +38,7 @@ def create_party():
             name = form.name.data,
             code = randint(1000000,9999999)
         )
-        current_user.current_party.append(new_party)
+        current_user.current_party = new_party
         db.session.add(new_party)
         db.session.commit()
         flash('Party Created Successfully')
