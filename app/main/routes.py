@@ -52,7 +52,56 @@ def create_party():
 def party_details(party_id):
     party = Party.query.get(party_id)
     form = PlaylistForm()
+    if party.playlist is not None:
+        uid = party.playlist
+        auth_response = requests.post(AUTH_URL, {
+            'grant_type': 'client_credentials',
+            'client_id': CLIENT_ID,
+            'client_secret': CLIENT_SECRET,
+        })
+
+        # convert the response to JSON
+        auth_response_data = auth_response.json()
+
+        # save the access token
+        access_token = auth_response_data['access_token']
+
+        #Need to pass access token into header to send properly formed GET request to API server
+        headers = {
+            'Authorization': 'Bearer {token}'.format(token=access_token)
+        }
+
+        BASE_URL = 'https://api.spotify.com/v1/'
+
+        r = requests.get(
+            BASE_URL + 'search?q=SickoMode&type=track&market=US', headers=headers)
+        d = r.json()
+        print(r.text)
+
+        spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(
+            client_id='b714b08a81b3470ab939354358c324c8', client_secret='83a32642aa4646009294ac6430b65dbe'))
+
+        parsed = json.loads(r.text)
+        (json.dumps(parsed, indent=4, sort_keys=True))
+
+        songs = spotify.playlist_items(uid)
+        tracks = []
+
+        for i, playlist in enumerate(songs['items']):
+            # [[Songs0, Artist0], [Songs1, Artist1]]
+            tracks.append([songs['items'][i]['track']['name'],
+                        songs['items'][i]['track']['artists'][0]['name']])
+
+        for song in tracks:
+            songToSearch = ' '.join([song[0], song[1]])
+            query = urllib.parse.quote(songToSearch)
+
+        print("Party details tracks", tracks)
+        return render_template('main/party_detail.html', party=party, form=form, tracks=tracks)
+
     return render_template('main/party_detail.html', party=party, form=form)
+
+    
 
 
 # Join Party
@@ -65,8 +114,8 @@ def join_party():
         current_user.past_parties.append(party)
         current_user.current_party = party
         db.session.commit()
-        flash('Party was created successfully')
-        return redirect(url_for('main.party_details', party=party))
+        flash('Party was joined successfully')
+        return redirect(url_for('main.party_details', party_id=party.id))
     return render_template('main/join_party.html', form=form)
 
 
@@ -120,7 +169,7 @@ def add_playlist(party_id):
 
     songs = spotify.playlist_items(uid)
     tracks = []
-    print(tracks)
+
     for i, playlist in enumerate(songs['items']):
         # [[Songs0, Artist0], [Songs1, Artist1]]
         tracks.append([songs['items'][i]['track']['name'],
@@ -129,12 +178,12 @@ def add_playlist(party_id):
     for song in tracks:
         songToSearch = ' '.join([song[0], song[1]])
         query = urllib.parse.quote(songToSearch)
-    
+    print(tracks)
     party = Party.query.get(party_id)
-    print(party.songs)
-    party.songs.append(tracks)
+    party.playlist = uid
+    db.session.commit()
 
-    return redirect(url_for('main.party_details', party=party, party_id=party.id))
+    return redirect(url_for('main.party_details', party=party, party_id=party.id, tracks=tracks))
 
 
     

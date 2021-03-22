@@ -13,10 +13,10 @@ user_party_table = db.Table('user_party_table',
                         db.Column('party_id', db.Integer, db.ForeignKey('party.id'))
                             )
 
-playlist_party_table = db.Table('playlist_party_table',
-                            db.Column('party_id', db.Integer, db.ForeignKey('party.id')),
-                            db.Column('playlist_id', db.Integer,db.ForeignKey('playlist.id'))
-                                  )
+# playlist_party_table = db.Table('playlist_party_table',
+#                             db.Column('party_id', db.Integer, db.ForeignKey('party.id')),
+#                             db.Column('playlist_id', db.Integer,db.ForeignKey('playlist.id'))
+#                                   )
 
 
 class User(UserMixin, db.Model):
@@ -35,7 +35,7 @@ class Party(db.Model):
     code = db.Column(db.Integer, unique=True)
     party_people = db.relationship('User', secondary=user_party_table)
     #playlist = db.relationship('Playlist', db.ForeignKey('playlist.id'))
-    songs = db.Column(db.Text())
+    playlist = db.Column(db.String(80))
     #TODO:
     # chat = 
 

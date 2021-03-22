@@ -6,7 +6,7 @@
 Code: {{party.code}}
 
 
-<!-- {% if current_user == party.admin %} -->
+{% if current_user == party.admin %}
     <form method="POST" action="{{ url_for('main.add_playlist', party_id=party.id)}}">
         {{ form.csrf_token }}
         <fieldset>
@@ -18,8 +18,19 @@ Code: {{party.code}}
             {{ form.submit }}
         </fieldset>
     </form>
-<!-- {% endif %} -->
+{% endif %}
 
+<ul>
+{% for track in tracks %}
+    <li>
+        <ol>
+            {% for song in track%}
+                <li>{{song}}</li>
+            {% endfor %}
+        </ol>
+    </li>
+{% endfor %}
+</ul>
 
 
 {% endblock %}
