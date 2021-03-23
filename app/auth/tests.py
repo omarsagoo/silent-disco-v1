@@ -14,7 +14,7 @@ def create_user():
     db.session.add(user)
     db.session.commit()
 
-    
+
 # Tests
 
 
@@ -30,3 +30,26 @@ class AuthTests(TestCase):
         self.app = app.test_client()
         db.drop_all()
         db.create_all()
+
+    def test_signup_existing_user(self):
+        # Tests for the signup route. It should:
+        # - Create a user
+        # - Make a POST request to /signup, sending the same username & password
+        # - Check that the form is displayed again with an error message
+        post_data = {
+            'username': 'Test User',
+            'password': '12345',
+            'name': 'John'
+        }
+        self.app.post('/signup', data=post_data)
+
+        post_data = {
+            'username': 'Test User',
+            'password': '12345',
+            'name': 'John'
+        }
+        response = self.app.post('/signup', data=post_data)
+
+        response_text = response.get_data(as_text=True)
+        self.assertIn(
+            'That username is taken. Please choose a different one.', response_text)
