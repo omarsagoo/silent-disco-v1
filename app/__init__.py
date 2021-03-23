@@ -9,7 +9,6 @@ import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['SESSION_COOKIE_SECURE'] = False
 app.secret_key = os.urandom(24)
 
 socketio = SocketIO(app, cors_allowed_origins="*",)
