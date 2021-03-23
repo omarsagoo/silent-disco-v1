@@ -34,7 +34,7 @@ def create_party():
             name = form.name.data,
             code = randint(1000000,9999999)
         )
-        current_user.current_party.append(new_party) 
+        current_user.current_party = [new_party] 
         db.session.add(new_party)
         db.session.commit()
         flash('Party Created Successfully')
@@ -108,7 +108,7 @@ def join_party():
     if form.validate_on_submit():
         party = Party.query.filter_by(code=form.code.data).one()
         current_user.past_parties.append(party)
-        current_user.current_party.append(party)
+        current_user.current_party = [party]
         db.session.commit()
         flash('Party was joined successfully')
         return redirect(url_for('main.party_details', party_id=party.id))
