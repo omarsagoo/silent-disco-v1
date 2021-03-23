@@ -108,7 +108,7 @@ def join_party():
     if form.validate_on_submit():
         party = Party.query.filter_by(code=form.code.data).one()
         current_user.past_parties.append(party)
-        current_user.current_party = party
+        current_user.current_party.append(party)
         db.session.commit()
         flash('Party was joined successfully')
         return redirect(url_for('main.party_details', party_id=party.id))
