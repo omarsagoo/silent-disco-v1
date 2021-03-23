@@ -57,5 +57,5 @@ def join_part():
         current_user.current_party = party
         db.session.commit()
         flash('Party was created successfully')
-        return redirect(url_for('main.homepage', party=party))
+        return redirect(url_for('main.party_details', party=party))
     return render_template('main/join_party.html', form=form)

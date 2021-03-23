@@ -1,11 +1,25 @@
 {% extends 'base/base.html' %}
 {% block content %}
 
-  <h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
-  <div class="message_holder"></div>
+    {% if messages|length == 0%}
+        <h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
+        <div class="message_holder"></div>
+
+    {% else %}
+        <div class="message_holder">
+            {% for message in messages %}
+                <div>
+                    <b style="color:#000">
+                        {{message.name}}
+                    </b>
+                    {{message.message}}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
 
-  <form method="POST" action="">
+<form method="POST" action="">
     {{form.csrf_token}}
     <fieldset>
         <legend>Message</legend>
