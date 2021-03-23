@@ -2,8 +2,6 @@ import requests
 import spotipy
 import urllib.parse
 import urllib.request
-import re
-from pytube import YouTube
 from spotipy.oauth2 import SpotifyClientCredentials
 
 CLIENT_ID = '69c20fe2830f4f2eab286331ffe88702'
