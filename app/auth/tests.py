@@ -72,3 +72,22 @@ class AuthTests(TestCase):
 
         response_text = response.get_data(as_text=True)
         self.assertIn('logout', response_text)
+
+    def test_login_incorrect_password(self):
+        # Tests for the login route. It should:
+        # - Create a user
+        # - Make a POST request to /login, sending the created username &
+        #   an incorrect password
+        # - Checks that the login form is displayed again, with an appropriate
+        #   error message
+
+        create_user()
+
+        post_data = {
+            'username': 'me1',
+            'password': '1234567'
+        }
+        response = self.app.post('/login', data=post_data)
+        response_text = response.get_data(as_text=True)
+        self.assertIn(
+            "Password doesn&#39;t match. Please try again.", response_text)
