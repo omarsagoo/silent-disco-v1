@@ -5,10 +5,17 @@ socket.on( 'connect', function() {
     element.scrollTop = element.scrollHeight;
     
     party_id = document.location.pathname.substr(6)
-    socket.emit( 'message', {
+    socket.emit( 'connection', {
         party_id : party_id,
-        message : 'COnNECTED USeR'
     })
+
+    window.onbeforeunload = function () {
+        socket.emit( 'disconnection', {
+            party_id : party_id,
+        })
+        return null
+    }
+
     var form = $( 'form' ).on( 'submit', function( e ) {
         e.preventDefault()
         let user_input = $( 'textarea#message' ).val()

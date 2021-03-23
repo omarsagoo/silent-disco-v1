@@ -25,11 +25,8 @@ def handle_message_received(data, methods=['GET', 'POST']):
     print(f'received my event from {current_user.name}: '+ str(data))
     data['name'] = current_user.name
 
-    if data['message'] == 'COnNECTED USeR':
-        join_room(data['party_id'])
-        print("here")
-        return
-    elif data['message'] == 'dIsCOnNECTED USeR':
+
+    if data['message'] == 'dIsCOnNECTED USeR':
         leave_room(data['party_id'])
         print("left")
         return
@@ -45,7 +42,12 @@ def handle_message_received(data, methods=['GET', 'POST']):
     socketio.emit('recieved message', data, callback=messageReceived, to=data['party_id'])
 
 
-@socketio.on("client disconnected")
-def disconnect_client():
+@socketio.on("disconnection")
+def disconnect_client(data, methods=['GET', 'POST']):
     leave_room(data['party_id'])
     print("left")
+
+@socketio.on('connection')
+def connect_client(data, methods=['GET', 'POST']):
+    join_room(data['party_id'])
+    print("here")
