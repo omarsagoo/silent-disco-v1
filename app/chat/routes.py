@@ -22,19 +22,13 @@ def messageReceived(methods=['GET', 'POST']):
 
 @socketio.on('message')
 def handle_message_received(data, methods=['GET', 'POST']):
-    print(f'received my event from {current_user.name}: '+ str(data))
     data['name'] = current_user.name
-
-
-    if data['message'] == 'dIsCOnNECTED USeR':
-        leave_room(data['party_id'])
-        print("left")
-        return
 
     new_msg = Message(
         name = current_user.name,
         message = data['message']
     )
+
     party = Party.query.get(data['party_id'])
     party.messages.append(new_msg)
     db.session.commit()
@@ -45,9 +39,7 @@ def handle_message_received(data, methods=['GET', 'POST']):
 @socketio.on("disconnection")
 def disconnect_client(data, methods=['GET', 'POST']):
     leave_room(data['party_id'])
-    print("left")
 
 @socketio.on('connection')
 def connect_client(data, methods=['GET', 'POST']):
     join_room(data['party_id'])
-    print("here")

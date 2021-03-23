@@ -7,7 +7,7 @@ Code: {{party.code}}
 
 
 <h3>Chat Room</h3>
-<a href="/chat/{{party.id}}">Chat Room</a>
+<a href="{{ url_for('chat.sessions', party_id=party.id)}}">Chat Room</a>
 
 
 {% if current_user == party.admin %}

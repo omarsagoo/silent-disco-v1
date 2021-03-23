@@ -30,7 +30,7 @@ socket.on( 'connect', function() {
 socket.on( 'recieved message', function( msg ) {
     if( typeof msg.message !== 'undefined' ) {
         $( 'h3' ).remove()
-        $( 'div.message_holder' ).append('<div><b style="color:             #000">'+ msg.name +'</b> '+msg.message+'</div>' )
+        $( 'div.message_holder' ).append('<div><b style="color: #000">'+ msg.name +'</b> '+msg.message+'</div>' )
 
         var element = document.getElementById("message-holder");
         element.scrollTop = element.scrollHeight;
