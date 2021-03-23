@@ -3,6 +3,8 @@ Through our app, we are solving a very important issue - when people want to hav
 
 With Silent Disco, they will all be able to sync their devices and listen to the exact same song at the same time, on their own headphones - essentially permitting them to have a silent disco wherever they are.
 
+[Test Here!](https://silent-disco-intensive.herokuapp.com)
+
 ## To Run
 ```bash
 $ git clone https://www.github.com/omarsagoo/silent-disco-v1

@@ -47,9 +47,9 @@ music at the same time.
 
 ## Personal Achievement Goals:
 
-1. CRUD Parties and Playlists
-2. CRUD Users
-3. Connecting Users, Parties, Playlists
+1. [CRUD Parties and Playlists](https://github.com/omarsagoo/silent-disco-v1/blob/main/app/main/routes.py)
+2. [CRUD Users](https://github.com/omarsagoo/silent-disco-v1/blob/main/app/main/routes.py)
+3. [Connecting Users, Parties, Playlists](https://github.com/omarsagoo/silent-disco-v1/blob/main/app/models.py)
 
 ### Teammate 1: Brenner
 
