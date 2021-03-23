@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+
+{{party.name}}
+Code: {{party.code}}
+
+
+<h3>Chat Room</h3>
+<a href="{{ url_for('chat.sessions', party_id=party.id)}}">Chat Room</a>
+
+
+{% if current_user == party.admin %}
+    <form method="POST" action="{{ url_for('main.add_playlist', party_id=party.id)}}">
+        {{ form.csrf_token }}
+        <fieldset>
+            <legend>Enter your credentials</legend>
+        
+            {{form.uid.label}}
+            {{form.uid}}
+        
+            {{ form.submit }}
+        </fieldset>
+    </form>
+{% endif %}
+
+<ul>
+{% for track in tracks %}
+    <a href="{{track.url}}">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{track.img}}" alt="..." style="height: 100px; width:100px;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h5 class="card-title">{{track.name}}</h5>
+                <h6 class="card-text">
+                    {{track.artist}}
+                </h6>
+                </div>
+            </div>
+            </div>
+        </div>
+    </a>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

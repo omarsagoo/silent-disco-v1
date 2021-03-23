@@ -2,6 +2,8 @@
 {% block content %}
 
 <h1>Silent Disco</h1>
-
-
+{% for party in current_user.current_party %}
+<a href="/party/{{ party.id }}">{{ party.name }}</a> 
+<p><strong>Attendees:</strong> {{ party.party_people | length }}</p>
+{% endfor %}
 {% endblock %}

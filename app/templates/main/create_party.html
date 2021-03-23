@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<h1>New Group</h1>
+
+<form method="POST" action="{{ url_for('main.create_party')}}">
+    {{form.csrf_token}}
+    <fieldset>
+        <legend>New Party</legend>
+
+        {{form.name.label}}
+        {{form.name}}
+
+        {{form.submit}}
+
+
+    </fieldset>
+</form>
+
+{% endblock %}

@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from datetime import date, datetime
-import bcrypt
+from app import bcrypt
 from app.models import User
 from app.auth.forms import SignUpForm, LoginForm
 # Import Forms
@@ -38,7 +38,6 @@ def login():
         login_user(user, remember=True)
         next_page = request.args.get('next')
         return redirect(next_page if next_page else url_for('main.homepage'))
-    print(form.errors)
     return render_template('main/login.html', form=form)
 
 

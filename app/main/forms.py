@@ -4,7 +4,7 @@ from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length, ValidationError, URL
 from wtforms.fields.core import FloatField
 from app import bcrypt
-from app.models import User, Party, Playlist
+from app.models import User, Party
 
 # Create Party Form
 
@@ -28,3 +28,10 @@ class JoinPartyForm(FlaskForm):
         if not party:
             raise ValidationError(
                 'That code is incorrect. Please try again.')
+
+# Choose Playlist Form
+
+class PlaylistForm(FlaskForm):
+    ''' Form for choosing spotify playlist '''
+    uid = StringField('Playlist UID')
+    submit = SubmitField('Submit')
