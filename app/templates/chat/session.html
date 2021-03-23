@@ -1,40 +1,33 @@
 {% extends 'base/base.html' %}
 {% block content %}
 
-    {% if messages|length == 0%}
-        <h3 style='color: #ccc;font-size: 30px;'>No message yet..</h3>
-        <div class="message_holder"></div>
+  <div class="row col-sm-8 offset-sm-2 bg-warning chatbox-parent">
+      <div class="chatbox">
 
-    {% else %}
-        <div class="message_holder">
-            {% for message in messages %}
-                <div>
-                    <b style="color:#000">
-                        {{message.name}}
-                    </b>
-                    {{message.message}}
+            <div class="message_holder"  id="message-holder">
+                <div class="message-inner">
+                    {% for message in messages %}
+                        <div >
+                            <b style="color:#000">
+                                {{message.name}}
+                            </b>
+                            {{message.message}}
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
-    {% endif %}
+            </div>
 
-
-<form method="POST" action="">
-    {{form.csrf_token}}
-    <fieldset>
-        <legend>Message</legend>
-
-        {{form.message.label}}
-        {{form.message}}
-
-        {{form.submit}}
-
-
-    </fieldset>
-</form>
-
-  <div class="row col-sm-8 offset-sm-2 bg-warning">
-      <div class="chatbox m-1 bg-dark">
+        <form method="POST" action="" class="send-message">
+            {{form.csrf_token}}
+            <fieldset>
+        
+                {{form.message}}
+        
+                {{form.submit}}
+        
+        
+            </fieldset>
+        </form>
       </div>
   </div>
 

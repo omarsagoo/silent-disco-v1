@@ -2,6 +2,49 @@ body {
     background-color: blueviolet;
 }
 
+.chatbox-parent {
+    margin-top: 1rem;
+}
+
 .chatbox {
     height: 50rem;
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.send-message{
+    padding-left: -10px;
+    width: 96.5%;
+    margin-bottom: 1rem;
+    position: absolute;
+    bottom: 0;
+}
+
+textarea#message {
+    width: 90%;
+    height: 4rem;
+    resize: none;
+    bottom: 0;
+    position: absolute;
+    padding-left: 10px;
+    padding-top: 5px;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+}
+
+textarea#message + #submit {
+    width: 10%;
+    height: 4rem;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+
+.message_holder {
+    height: 90%;
+    padding: 10px;
+    overflow: auto;
 }

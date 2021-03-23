@@ -6,6 +6,10 @@
 Code: {{party.code}}
 
 
+<h3>Chat Room</h3>
+<a href="/chat/{{party.id}}">Chat Room</a>
+
+
 {% if current_user == party.admin %}
     <form method="POST" action="{{ url_for('main.add_playlist', party_id=party.id)}}">
         {{ form.csrf_token }}

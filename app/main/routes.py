@@ -1,22 +1,18 @@
 import json
 from flask import Blueprint, request, render_template, redirect, url_for, flash
-import flask
-from flask_login import login_user, logout_user, login_required, current_user
-from datetime import date, datetime
+from flask_login import login_required, current_user
 
-import flask_login
 
-from app.models import User, Party
-from app.main.forms import CreatePartyForm, JoinPartyForm, PlaylistForm 
+from app.models import  Party
+from .forms import CreatePartyForm, JoinPartyForm, PlaylistForm 
 
 from random import randint
-from app import app, db, bcrypt
+from app import db
 
 import requests
 import spotipy
 import urllib.parse
 import urllib.request
-import re
 from spotipy.oauth2 import SpotifyClientCredentials
 
 main = Blueprint('main', __name__)
@@ -34,11 +30,11 @@ def create_party():
     form = CreatePartyForm()
     if form.validate_on_submit():
         new_party = Party(
-            admin = flask_login.current_user,
+            admin = current_user,
             name = form.name.data,
             code = randint(1000000,9999999)
         )
-        current_user.current_party = new_party
+        current_user.current_party.append(new_party) 
         db.session.add(new_party)
         db.session.commit()
         flash('Party Created Successfully')
