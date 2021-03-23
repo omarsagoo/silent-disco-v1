@@ -91,3 +91,19 @@ class AuthTests(TestCase):
         response_text = response.get_data(as_text=True)
         self.assertIn(
             "Password doesn&#39;t match. Please try again.", response_text)
+
+    def test_login_nonexistent_user(self):
+        # Test for the login route. It should:
+        # - Make a POST request to /login, sending a username & password
+        # - Check that the login form is displayed again, with an appropriate
+        #   error message
+
+        post_data = {
+            'username': 'Random Name',
+            'password': '12345'
+        }
+        response = self.app.post('/login', data=post_data)
+
+        response_text = response.get_data(as_text=True)
+        self.assertIn(
+            'No user with that username. Please try again.', response_text)
