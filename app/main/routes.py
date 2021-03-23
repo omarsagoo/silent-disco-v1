@@ -84,13 +84,18 @@ def party_details(party_id):
         tracks = []
 
         for i, playlist in enumerate(songs['items']):
+            song = {
+                'name': songs['items'][i]['track']['name'],
+                'artist':  songs['items'][i]['track']['artists'][0]['name'],
+                'url': songs['items'][i]['track']['external_urls']['spotify'],
+                'img': songs['items'][i]['track']['album']['images'][0]['url']
+            }
             # [[Songs0, Artist0], [Songs1, Artist1]]
-            tracks.append([songs['items'][i]['track']['name'],
-                        songs['items'][i]['track']['artists'][0]['name']])
+            tracks.append(song)
 
-        for song in tracks:
-            songToSearch = ' '.join([song[0], song[1]])
-            query = urllib.parse.quote(songToSearch)
+        # for song in tracks:
+        #     songToSearch = ' '.join([song[0], song[1]])
+        #     query = urllib.parse.quote(songToSearch)
 
         print("Party details tracks", tracks)
         return render_template('main/party_detail.html', party=party, form=form, tracks=tracks)
