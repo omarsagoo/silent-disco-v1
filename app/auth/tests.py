@@ -107,3 +107,25 @@ class AuthTests(TestCase):
         response_text = response.get_data(as_text=True)
         self.assertIn(
             'No user with that username. Please try again.', response_text)
+
+    def test_logout(self):
+        # Test for the logout route. It should:
+        # - Create a user
+        # - Logs the user in (make a POST request to /login)
+        # - Make a GET request to /logout
+        # - Check that the "log in" button is showing
+
+        create_user()
+
+        post_data = {
+            'username': 'me1',
+            'password': 'password'
+        }
+        self.app.post('/login', data=post_data)
+
+        self.app.get('/logout', data=post_data)
+
+        response = self.app.get('/', follow_redirects=True)
+
+        response_text = response.get_data(as_text=True)
+        self.assertNotIn('Log Out', response_text)
