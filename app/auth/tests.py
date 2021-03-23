@@ -53,3 +53,22 @@ class AuthTests(TestCase):
         response_text = response.get_data(as_text=True)
         self.assertIn(
             'That username is taken. Please choose a different one.', response_text)
+
+    def test_login_correct_password(self):
+        # Tests for the login route. It should:
+        # - Create a user
+        # - Makes a POST request to /login, sending the created username & password
+        # - Check that the homepage  now displays the logout button (indicating that user is
+        # authenticated)
+
+        create_user()
+        post_data = {
+            'username': 'me1',
+            'password': 'password'
+        }
+        self.app.post('/login', data=post_data)
+
+        response = self.app.get('/', follow_redirects=True)
+
+        response_text = response.get_data(as_text=True)
+        self.assertIn('logout', response_text)
