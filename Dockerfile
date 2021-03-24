@@ -1,5 +1,5 @@
+# python base image
 FROM python:3.7-slim-buster
-
 
 # Copy all the code to a directory called app
 ADD . /app
