@@ -27,6 +27,7 @@ This will be the precursor to creating chat rooms for each individual party
 
 **How will you demonstrate completion of your objective?** 
 Screenshots will show that a chatroom has been created and is usable on localhost
+https://github.com/omarsagoo/silent-disco-v1/tree/main/app/chat
 
 ## Objective 2: Connect a chatroom with a party
 **Why do you want to meet this objective? How will it improve your project?** 
@@ -34,12 +35,14 @@ This will allow users to chat with other members inside of a party!
 
 **How will you demonstrate completion of your objective?** 
 Screenshots of this working and usable on localhost
+https://github.com/omarsagoo/silent-disco-v1/tree/main/app/chat
 
 ## Objective 3: Dockerize and deploy web application
 **Why do you want to meet this objective? How will it improve your project?** 
 This will allow any user to use our service from any computer
 **How will you demonstrate completion of your objective?** 
 a working URL to access the webpage
+https://github.com/omarsagoo/silent-disco-v1/blob/main/Dockerfile
 ## Stretch goals (optional):
 
 **What stretch goals do you have for your project?**
